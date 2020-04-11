@@ -2,7 +2,28 @@
 Bitrix в одном монолитном контейнере
 # Статус
 Тест
+# Требования
+Операционная система: Ubuntu 18 или новее. На других версиях может работать, но не тестировалось. Должен быть установлен Docker, [согласно инструкции](https://docs.docker.com/engine/install/ubuntu/). В случае запуска команд без чтения текста, выполните:
+```
+curl -s https://get.docker.com | sh
+```
+Добавьте себя в группу `docker` для выполнения команд без `sudo`:
+```
+sudo usermod -aG docker $USER && exit
+```
+Откройте терминал заново. Теперь без ошибок прав доступа должна выпониться команда:
+```
+docker ps
+```
+Также должен быть установлен Git:
+```
+sudo apt update && sudo apt install -y git
+```
 # Использование
+Создайте проект:
+```
+git clone https://github.com/abicorios/bitrix_docker_monolith projectname
+```
 Создание образа:
 ```
 docker build --rm --no-cache -t c7 .
