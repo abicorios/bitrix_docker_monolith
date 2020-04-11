@@ -1,5 +1,5 @@
 #!/bin/bash
-project=${PWD##*/}
+source config
 if [ -d www ]
 then
 	echo sudo chown -R $USER:$USER www

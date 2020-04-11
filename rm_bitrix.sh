@@ -1,5 +1,5 @@
 #!/bin/bash
-project=${PWD##*/}
+source config
 echo docker container stop $project
 docker container stop $project
 echo docker container rm $project
