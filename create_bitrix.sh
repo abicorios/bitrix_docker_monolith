@@ -1,6 +1,12 @@
 #!/bin/bash
-echo mkdir www
-mkdir www
+if [ -d www ]
+then
+	echo sudo chown -R $USER:$USER www
+	sudo chown -R $USER:$USER www
+else
+	echo mkdir www
+	mkdir www
+fi
 echo docker build --rm --no-cache -t c7 .
 time docker build --rm --no-cache -t c7 .
 echo docker run --privileged --name c7 -p 80:80 -p 443:443 -p 9000:9000 -p 3306:3306 -p 11211:11211 -v $PWD/www:/home/bitrix/www -d c7
