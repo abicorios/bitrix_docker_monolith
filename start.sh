@@ -1,5 +1,5 @@
 #!/bin/bash
-. .lib/checks.sh
+. .lib/reqs.sh
 source config
 docker container start $project
 ./.lib/get_ip.sh

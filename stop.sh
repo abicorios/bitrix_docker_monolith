@@ -1,4 +1,4 @@
 #!/bin/bash
-. .lib/checks.sh
+. .lib/reqs.sh
 source config
 docker container stop $project
