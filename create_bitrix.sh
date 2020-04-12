@@ -10,14 +10,6 @@ else
 	echo mkdir www
 	mkdir www
 fi
-echo sudo setfacl -bR www
-sudo setfacl -bR www
-echo sudo setfacl -Rm u:$USER:rwx www
-sudo setfacl -Rm u:$USER:rwx www
-echo sudo setfacl -Rdm u:$USER:rwx www
-sudo setfacl -Rdm u:$USER:rwx www
-echo sudo setfacl -Rdm u:600:rwx www
-sudo setfacl -Rdm u:600:rwx www
 echo docker build --rm --no-cache -t $project .
 time docker build --rm --no-cache -t $project .
 echo docker network create $project
@@ -36,5 +28,7 @@ echo docker container restart $project
 time docker container restart $project
 echo docker exec $project rsync -az /home/bitrix/www.bac/ /home/bitrix/www/
 docker exec $project rsync -az /home/bitrix/www.bac/ /home/bitrix/www/
+echo sudo setfacl -Rm u:$USER:rwx,d:u:$USER:rwx,u:600:rwx,d:u:600:rwx,o:rwx,d:o:rwx www
+sudo setfacl -Rm u:$USER:rwx,d:u:$USER:rwx,u:600:rwx,d:u:600:rwx,o:rwx,d:o:rwx www
 . .lib/get_ip.sh
 xdg-open http://$ip>/dev/null 2>&1
