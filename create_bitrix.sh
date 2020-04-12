@@ -16,8 +16,8 @@ echo sudo setfacl -Rdm u:$USER:rwx www
 sudo setfacl -Rdm u:$USER:rwx www
 echo docker build --rm --no-cache -t $project .
 time docker build --rm --no-cache -t $project .
-echo docker run --privileged --name $project -p 80:80 -p 443:443 -p 9000:9000 -p 3306:3306 -p 11211:11211 -v $PWD/www:/home/bitrix/www -d $project
-time docker run --privileged --name $project -p 80:80 -p 443:443 -p 9000:9000 -p 3306:3306 -p 11211:11211 -v $PWD/www:/home/bitrix/www -d $project
+echo docker run --privileged --name $project -v $PWD/www:/home/bitrix/www -d $project
+time docker run --privileged --name $project -v $PWD/www:/home/bitrix/www -d $project
 echo docker exec $project umount /home/bitrix/www
 docker exec $project umount /home/bitrix/www
 echo docker exec $project rm -rf /home/bitrix/www
@@ -30,3 +30,5 @@ echo docker container restart $project
 time docker container restart $project
 echo docker exec $project rsync -az /home/bitrix/www.bac/ /home/bitrix/www/
 docker exec $project rsync -az /home/bitrix/www.bac/ /home/bitrix/www/
+ip=`docker exec $project hostname -I`
+echo "ip: $ip"
