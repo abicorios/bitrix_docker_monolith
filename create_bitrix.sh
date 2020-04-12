@@ -18,6 +18,8 @@ echo sudo setfacl -Rm u:$USER:rwx www
 sudo setfacl -Rm u:$USER:rwx www
 echo sudo setfacl -Rdm u:$USER:rwx www
 sudo setfacl -Rdm u:$USER:rwx www
+echo sudo setfacl -Rdm u:600:rwx www
+sudo setfacl -Rdm u:600:rwx www
 echo docker build --rm --no-cache -t $project .
 time docker build --rm --no-cache -t $project .
 echo docker network create $project
