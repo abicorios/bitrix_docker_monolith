@@ -1,5 +1,5 @@
 #!/bin/bash
-. .lib/checks.sh
+. .lib/reqs.sh
 . .lib/created.sh
 source config
 if [ -d www ]
