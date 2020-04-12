@@ -9,7 +9,7 @@ else
 	echo mkdir www
 	mkdir www
 fi
-echo sudo setfacl -b www
+echo sudo setfacl -bR www
 sudo setfacl -bR www
 echo sudo setfacl -Rm u:$USER:rwx www
 sudo setfacl -Rm u:$USER:rwx www
