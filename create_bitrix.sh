@@ -30,5 +30,5 @@ echo docker container restart $project
 time docker container restart $project
 echo docker exec $project rsync -az /home/bitrix/www.bac/ /home/bitrix/www/
 docker exec $project rsync -az /home/bitrix/www.bac/ /home/bitrix/www/
-ip=`docker exec $project hostname -I`
-echo "ip: $ip"
+. get_ip.sh
+xdg-open http://$ip>/dev/null 2>&1
