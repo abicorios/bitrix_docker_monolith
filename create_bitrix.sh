@@ -16,8 +16,10 @@ echo sudo setfacl -Rdm u:$USER:rwx www
 sudo setfacl -Rdm u:$USER:rwx www
 echo docker build --rm --no-cache -t $project .
 time docker build --rm --no-cache -t $project .
-echo docker run --privileged --name $project -v $PWD/www:/home/bitrix/www -d $project
-time docker run --privileged --name $project -v $PWD/www:/home/bitrix/www -d $project
+echo docker network create $project
+docker network create $project
+echo docker run --privileged --name $project --network $project -v $PWD/www:/home/bitrix/www -d $project
+time docker run --privileged --name $project --network $project -v $PWD/www:/home/bitrix/www -d $project
 echo docker exec $project umount /home/bitrix/www
 docker exec $project umount /home/bitrix/www
 echo docker exec $project rm -rf /home/bitrix/www
