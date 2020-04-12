@@ -1,6 +1,7 @@
 #!/bin/bash
 . .lib/checks.sh
 . .lib/container_exists.sh
+. .lib/image_exists.sh
 source config
 if [ -d www ]
 then
