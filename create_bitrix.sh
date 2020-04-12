@@ -1,4 +1,5 @@
 #!/bin/bash
+. .lib/checks.sh
 source config
 if [ -d www ]
 then
