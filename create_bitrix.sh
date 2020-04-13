@@ -29,5 +29,8 @@ time docker container restart $project
 echo docker exec $project rsync -az /home/bitrix/www.bac/ /home/bitrix/www/
 docker exec $project rsync -az /home/bitrix/www.bac/ /home/bitrix/www/
 . .lib/get_ip.sh
-xdg-open http://$ip>/dev/null 2>&1
+if [[ $xdg_open_is_installed == 1 ]]
+then
+	xdg-open http://$ip>/dev/null 2>&1
+fi
 ./fix_permissions.sh
