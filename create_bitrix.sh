@@ -28,6 +28,8 @@ echo docker container restart $project
 time docker container restart $project
 echo docker exec $project rsync -az /home/bitrix/www.bac/ /home/bitrix/www/
 docker exec $project rsync -az /home/bitrix/www.bac/ /home/bitrix/www/
+echo docker exec $project bash -c 'echo HOSTNAME=`hostname -f` > /etc/sysconfig/network'
+docker exec $project bash -c 'echo HOSTNAME=`hostname -f` > /etc/sysconfig/network'
 . .lib/get_ip.sh
 if [[ $xdg_open_is_installed == 1 ]]
 then
